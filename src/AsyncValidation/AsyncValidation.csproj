@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
+  <PropertyGroup>
     <Description>
       This library enhances the default validation mechanism in ASP .Net Core by introducing asynchronous capabilities.
     </Description>
@@ -7,7 +7,8 @@
     <Authors>NativeWaves</Authors>
     <Company>NativeWaves</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseExpression>MIT license</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>microsoft;validation;async;mvc</PackageTags>
     <CurrentYear>$([System.DateTime]::Today.Year)</CurrentYear>
 
@@ -19,6 +20,11 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DebugType>full</DebugType>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="LICENSE" Pack="true" PackagePath="LICENSE"/>
+  </ItemGroup>
+
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
