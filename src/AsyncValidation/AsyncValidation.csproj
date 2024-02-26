@@ -6,7 +6,6 @@
 
     <Authors>NativeWaves</Authors>
     <Company>NativeWaves</Company>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>microsoft;validation;async;mvc</PackageTags>
     <CurrentYear>$([System.DateTime]::Today.Year)</CurrentYear>
 
@@ -20,15 +19,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LICENSE" Pack="true" PackagePath="LICENSE"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Options" />
     <PackageReference Include="System.ComponentModel.Annotations" />
   </ItemGroup>
+
 </Project>

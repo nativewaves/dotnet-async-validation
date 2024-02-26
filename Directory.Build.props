@@ -5,8 +5,10 @@
     <RootNamespace>Microsoft.AspNetCore.Mvc.AsyncValidation</RootNamespace>
 
     <AssemblyName>Microsoft.AspNetCore.Mvc.$(MSBuildProjectName)</AssemblyName>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 
+    <IncludeContentInPack>true</IncludeContentInPack>
     <!-- Turn on central package versioning, so we can define package version in directory.packages.props -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <TargetFramework>net7.0</TargetFramework>
@@ -32,4 +34,10 @@
     </WarningsNotAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(SolutionDir)LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
 </Project>
