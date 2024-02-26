@@ -1,0 +1,98 @@
+**/*.egg-info
+**/dist
+**/build
+**/.mypy_cache
+**/__pycache__
+**/wheels
+**/node_modules
+**/.venv
+**/.pytest_cache
+**/tmp-docker-build
+**/__pypackages__
+**/*.pyd
+**/*.so
+cov.xml
+.coverage
+**/.vs/
+.infra-*.yaml
+
+#
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
+
+# Rider
+.idea
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Distribution / packaging
+**/.Python
+**/env/
+**/build/
+**/develop-eggs/
+**/dist/
+**/downloads/
+**/eggs/
+**/.eggs/
+**/lib/
+**/lib64/
+**/parts/
+**/sdist/
+**/var/
+**/*.egg-info/
+**/.installed.cfg
+**/*.egg
+**/pip-wheel-metadata/
+
+# Serverless directories
+**/.serverless
+
+**/sdks/py/my-package/**
+**/apps/index-node/examples/obsolete
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+.circleci/suflo.yml
+services/sportworld/apps/api/Api/Data/*

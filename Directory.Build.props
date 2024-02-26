@@ -1,0 +1,34 @@
+<Project>
+  <PropertyGroup>
+    <RootPath>$([MSBuild]::GetPathOfFileAbove('AsyncValidation.sln', '$(MSBuildThisFileDirectory)').Trim('AsyncValidation.sln'))</RootPath>
+    <!--Default RootNamespace for all "Shared" and "Service" projects truncates "Shared" and "Service" sufix.-->
+    <RootNamespace>Microsoft.AspNetCore.Mvc.AsyncValidation</RootNamespace>
+
+    <AssemblyName>Microsoft.AspNetCore.Mvc.$(MSBuildProjectName)</AssemblyName>
+
+    <!-- Turn on central package versioning, so we can define package version in directory.packages.props -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <TargetFramework>net7.0</TargetFramework>
+    <TargetFrameworks>net7.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>
+      $(NoWarn);
+      CS1591;                <!--Missing XML comment for publicly visible type-->
+      NU1605;                <!--Detected package downgrade-->
+    </NoWarn>
+    <WarningsNotAsErrors>
+      CA1822;                <!--make member static-->
+      CA1842;                <!--whenAll for single task-->
+      IDE0046;               <!--if can be simplified-->
+      IDE0055;               <!--Fix formatting-->
+      IDE0057;               <!--simplify substring-->
+      IDE0061;               <!--make local function static-->
+      IDE0079;               <!--remove unnecessary suppression-->
+      NU1603;                <!--nuget resolve dependencies-->
+      NU1902;                <!--nuget known moderate severity vulnerability-->
+    </WarningsNotAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+</Project>
