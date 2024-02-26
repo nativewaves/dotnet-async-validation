@@ -7,8 +7,6 @@
     <Authors>NativeWaves</Authors>
     <Company>NativeWaves</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>microsoft;validation;async;mvc</PackageTags>
     <CurrentYear>$([System.DateTime]::Today.Year)</CurrentYear>
 
@@ -20,7 +18,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DebugType>full</DebugType>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <None Include="LICENSE" Pack="true" PackagePath="LICENSE"/>
   </ItemGroup>

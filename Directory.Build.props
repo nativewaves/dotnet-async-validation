@@ -5,6 +5,7 @@
     <RootNamespace>Microsoft.AspNetCore.Mvc.AsyncValidation</RootNamespace>
 
     <AssemblyName>Microsoft.AspNetCore.Mvc.$(MSBuildProjectName)</AssemblyName>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
 
     <!-- Turn on central package versioning, so we can define package version in directory.packages.props -->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
