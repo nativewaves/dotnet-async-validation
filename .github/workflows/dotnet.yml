@@ -39,6 +39,4 @@ jobs:
               run: dotnet pack --no-build -o ./nupkg
 
             - name: Push NuGet package to GitHub
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-                  run: dotnet nuget push ./nupkg/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key $GITHUB_TOKEN
+              run: dotnet nuget push ./nupkg/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
