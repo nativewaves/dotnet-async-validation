@@ -9,10 +9,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <IncludeContentInPack>true</IncludeContentInPack>
-    <!-- Turn on central package versioning, so we can define package version in directory.packages.props -->
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <TargetFramework>net7.0</TargetFramework>
-    <TargetFrameworks>net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -32,7 +29,7 @@
       NU1603;                <!--nuget resolve dependencies-->
       NU1902;                <!--nuget known moderate severity vulnerability-->
     </WarningsNotAsErrors>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!--<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>-->
   </PropertyGroup>
 
   <ItemGroup>

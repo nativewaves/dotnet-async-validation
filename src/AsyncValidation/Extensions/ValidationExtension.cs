@@ -1,5 +1,4 @@
-﻿using B1SmartTV.Core.Validation;
-using Microsoft.AspNetCore.Mvc.AsyncValidation.Validation;
+﻿using Microsoft.AspNetCore.Mvc.AsyncValidation.Validation;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;

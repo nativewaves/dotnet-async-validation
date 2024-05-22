@@ -3,11 +3,10 @@
 
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.Extensions.Logging;
 
-namespace B1SmartTV.Core.Validation;
+namespace Microsoft.AspNetCore.Mvc.ModelBinding;
 #nullable enable
 
 public partial class AsyncParamterBinder
