@@ -43,11 +43,20 @@ jobs:
             - name: Test
               run: dotnet test --configuration Release --no-build --verbosity normal
 
-            - name: Pack and Combine
-              run: |
-                  dotnet pack --configuration Release --no-build -o ./nupkg/${{ matrix.dotnet-version }}
-                  mkdir -p ./nupkg/combined
-                  cp ./nupkg/${{ matrix.dotnet-version }}/*.nupkg ./nupkg/combined/
+            - name: Pack
+              run: dotnet pack --configuration Release --no-build -o ./nupkg/${{ matrix.dotnet-version }}
+
+            - name: Create Combined Directory
+              run: mkdir -p ./nupkg/combined
+
+            - name: Copy Packages
+              run: cp ./nupkg/${{ matrix.dotnet-version }}/*.nupkg ./nupkg/combined/
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@master
+              with:
+                  name: combined-nupkg
+                  path: ./nupkg/combined
 
     push_nuget:
         runs-on: ubuntu-latest
@@ -58,6 +67,12 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
+            - name: Download Artifact
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg
+                  path: ./nupkg/combined
 
             - name: Setup .NET
               uses: actions/setup-dotnet@v4
