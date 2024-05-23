@@ -22,7 +22,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
               with:
-                  fetch-depth: 0 # Perform a full clone to get the entire history
+                  fetch-depth: 0
 
             - name: Install GitVersion
               uses: gittools/actions/gitversion/setup@v1.1.1
@@ -38,13 +38,13 @@ jobs:
               run: dotnet restore
 
             - name: Build
-              run: dotnet build --no-restore
+              run: dotnet build --configuration Release --no-restore
 
             - name: Test
-              run: dotnet test --no-build --verbosity normal
+              run: dotnet test --configuration Release --no-build --verbosity normal
 
             - name: Pack
-              run: dotnet pack --no-build -o ./nupkg
+              run: dotnet pack --configuration Release --no-build -o ./nupkg
 
             - name: Push NuGet package to GitHub
               run: dotnet nuget push ./nupkg/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
