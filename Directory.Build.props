@@ -7,7 +7,7 @@
     <AssemblyName>Microsoft.AspNetCore.Mvc.$(MSBuildProjectName)</AssemblyName>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
     <IncludeContentInPack>true</IncludeContentInPack>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
