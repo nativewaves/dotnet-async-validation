@@ -98,5 +98,8 @@ jobs:
                   cp ./nupkg/combined/7.0.x/*.nupkg ./nupkg/combined/
                   cp ./nupkg/combined/8.0.x/*.nupkg ./nupkg/combined/
 
-            - name: Push NuGet package to GitHub
+            - name: Push NuGet package to GitHub Packages
               run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
+
+            - name: Push NuGet package to NuGet.org
+              run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
