@@ -55,7 +55,7 @@ jobs:
             - name: Upload Artifact
               uses: actions/upload-artifact@master
               with:
-                  name: combined-nupkg
+                  name: combined-nupkg-${{ matrix.dotnet-version }}
                   path: ./nupkg/combined
 
     push_nuget:
@@ -68,16 +68,35 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: Download Artifact
-              uses: actions/download-artifact@master
-              with:
-                  name: combined-nupkg
-                  path: ./nupkg/combined
-
             - name: Setup .NET
               uses: actions/setup-dotnet@v4
               with:
                   dotnet-version: "6.0.x"
+
+            - name: Download Artifact 6.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-6.0.x
+                  path: ./nupkg/combined/6.0.x
+
+            - name: Download Artifact 7.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-7.0.x
+                  path: ./nupkg/combined/7.0.x
+
+            - name: Download Artifact 8.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-8.0.x
+                  path: ./nupkg/combined/8.0.x
+
+            - name: Combine Artifacts
+              run: |
+                  mkdir -p ./nupkg/combined
+                  cp ./nupkg/combined/6.0.x/*.nupkg ./nupkg/combined/
+                  cp ./nupkg/combined/7.0.x/*.nupkg ./nupkg/combined/
+                  cp ./nupkg/combined/8.0.x/*.nupkg ./nupkg/combined/
 
             - name: Push NuGet package to GitHub
               run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
