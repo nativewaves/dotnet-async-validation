@@ -14,7 +14,7 @@ branches:
         regex: ^master$|^main$
         mode: ContinuousDelivery
         tag: ""
-        increment: None
+        increment: Patch
         prevent-increment-of-merged-branch-version: true
         track-merge-target: false
         source-branches: ["develop", "release"]
