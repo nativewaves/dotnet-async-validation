@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>
+      This library enhances the default validation mechanism in ASP .Net Core by introducing asynchronous capabilities.
+    </Description>
+    <Authors>NativeWaves</Authors>
+    <Company>NativeWaves</Company>
+    <PackageTags>microsoft;validation;async;mvc</PackageTags>
+    <CurrentYear>$([System.DateTime]::Today.Year)</CurrentYear>
+
+    <AllowedOutputExtensionsInPackageBuildOutputFolder Condition="'$(Configuration)'=='Debug'">.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.IO.Pipelines" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

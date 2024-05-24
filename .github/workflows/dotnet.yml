@@ -1,0 +1,105 @@
+name: .NET
+
+on:
+    push:
+        branches:
+            - master
+            - develop
+    pull_request:
+        branches:
+            - master
+            - develop
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                dotnet-version: ["6.0.x", "7.0.x", "8.0.x"]
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Install GitVersion
+              uses: gittools/actions/gitversion/setup@v1.1.1
+              with:
+                  versionSpec: "5.x"
+
+            - name: Setup .NET ${{ matrix.dotnet-version }}
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: ${{ matrix.dotnet-version }}
+
+            - name: Restore dependencies
+              run: dotnet restore
+
+            - name: Build
+              run: dotnet build --configuration Release --no-restore
+
+            - name: Test
+              run: dotnet test --configuration Release --no-build --verbosity normal
+
+            - name: Pack
+              run: dotnet pack --configuration Release --no-build -o ./nupkg/${{ matrix.dotnet-version }}
+
+            - name: Create Combined Directory
+              run: mkdir -p ./nupkg/combined
+
+            - name: Copy Packages
+              run: cp ./nupkg/${{ matrix.dotnet-version }}/*.nupkg ./nupkg/combined/
+
+            - name: Upload Artifact
+              uses: actions/upload-artifact@master
+              with:
+                  name: combined-nupkg-${{ matrix.dotnet-version }}
+                  path: ./nupkg/combined
+
+    push_nuget:
+        runs-on: ubuntu-latest
+        needs: build
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: "6.0.x"
+
+            - name: Download Artifact 6.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-6.0.x
+                  path: ./nupkg/combined/6.0.x
+
+            - name: Download Artifact 7.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-7.0.x
+                  path: ./nupkg/combined/7.0.x
+
+            - name: Download Artifact 8.0.x
+              uses: actions/download-artifact@master
+              with:
+                  name: combined-nupkg-8.0.x
+                  path: ./nupkg/combined/8.0.x
+
+            - name: Combine Artifacts
+              run: |
+                  mkdir -p ./nupkg/combined
+                  cp ./nupkg/combined/6.0.x/*.nupkg ./nupkg/combined/
+                  cp ./nupkg/combined/7.0.x/*.nupkg ./nupkg/combined/
+                  cp ./nupkg/combined/8.0.x/*.nupkg ./nupkg/combined/
+
+            - name: Push NuGet package to GitHub Packages
+              run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
+
+            - name: Push NuGet package to NuGet.org
+              run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
