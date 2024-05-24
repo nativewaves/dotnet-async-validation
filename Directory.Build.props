@@ -4,7 +4,7 @@
     <!--Default RootNamespace for all "Shared" and "Service" projects truncates "Shared" and "Service" sufix.-->
     <RootNamespace>Microsoft.AspNetCore.Mvc.AsyncValidation</RootNamespace>
 
-    <AssemblyName>Microsoft.AspNetCore.Mvc.$(MSBuildProjectName)</AssemblyName>
+    <AssemblyName>NativeWaves.$(MSBuildProjectName)</AssemblyName>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeContentInPack>true</IncludeContentInPack>
