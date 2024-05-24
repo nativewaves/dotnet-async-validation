@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Mvc.AsyncValidation.Extensions;
 
 public static class ValidationExtension
 {
-    public static IServiceCollection AddAsyncValidation(this IServiceCollection services)
+    public static OptionsBuilder<MvcOptions> AddAsyncValidation(this IServiceCollection services)
     {
         services.AddSingleton<IConfigureOptions<MvcOptions>, ConfigureMVCOptionsSetup>();
         services.AddSingleton<ParameterBinder, AsyncParamterBinder>();
@@ -23,7 +23,7 @@ public static class ValidationExtension
             var metadataProvider = s.GetRequiredService<IModelMetadataProvider>();
             return new AsyncObjectModelValidator(metadataProvider, options.ModelValidatorProviders, cache, options);
         });
-        return services;
+        return services.AddOptions<MvcOptions>();
     }
 
     internal sealed class ConfigureMVCOptionsSetup : IConfigureOptions<MvcOptions>
