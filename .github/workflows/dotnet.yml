@@ -102,4 +102,5 @@ jobs:
               run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GH_TOKEN }}
 
             - name: Push NuGet package to NuGet.org
+              if: github.ref == 'refs/heads/master'
               run: dotnet nuget push ./nupkg/combined/*.nupkg --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_TOKEN }}
